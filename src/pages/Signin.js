@@ -76,6 +76,9 @@ export default function SignIn() {
             <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
               <LockOutlinedIcon />
             </Avatar>
+            <Typography color="gray" variant="body1">
+              Lionesse Admin
+            </Typography>
             <Typography component="h1" variant="h5">
               Sign in
             </Typography>
@@ -114,6 +117,7 @@ export default function SignIn() {
               <Button
                 type="submit"
                 fullWidth
+                size="large"
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
