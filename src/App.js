@@ -1,14 +1,22 @@
-import logo from "./logo.svg";
-import { Routes, Route, Link } from "react-router-dom";
+import { useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
+import Dashboard from "./pages/Dashboard";
 import SignIn from "./pages/Signin";
+import { auth } from "./firebase/config";
 
 const App = () => {
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) console.log("USER HAS LOGGED IN");
+      else console.log("USER HAS NOT LOGGED IN");
+    });
+  }, []);
+
   return (
     <Routes>
-      {/* <Switch> */}
       <Route exact path="/" element={<SignIn />} />
-      {/* </Switch> */}
+      <Route exact path="/dashboard" element={<Dashboard />} />
     </Routes>
   );
 };
