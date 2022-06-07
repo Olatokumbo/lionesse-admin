@@ -3,7 +3,6 @@ import { firestore } from "./config";
 /**
  * Finds a user by its Id
  * @param userId
- * @returns
  */
 export const getUserById = async (id) => {
   try {
