@@ -89,6 +89,7 @@ export default function SignIn() {
                 margin="normal"
                 required
                 fullWidth
+                size="small"
                 id="email"
                 label="Email Address"
                 name="email"
@@ -99,6 +100,7 @@ export default function SignIn() {
                 margin="normal"
                 required
                 fullWidth
+                size="small"
                 name="password"
                 label="Password"
                 type="password"
