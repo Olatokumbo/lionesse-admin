@@ -29,3 +29,8 @@ export const clients = async () => {
     throw error;
   }
 };
+
+export const totalClients = async () => {
+  const clients = await firestore.collection("clients").get();
+  return clients.size;
+};

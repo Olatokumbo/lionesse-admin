@@ -13,3 +13,21 @@ export const getUserById = async (id) => {
     throw error;
   }
 };
+
+export const users = async () => {
+  let users = [];
+  try {
+    const querySnapShot = await firestore.collection("users").get();
+    querySnapShot.forEach((doc) => {
+      users.push(doc.data());
+    });
+    return users;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const totalUsers = async () => {
+  const users = await firestore.collection("users").get();
+  return users.size;
+};
