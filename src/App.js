@@ -6,6 +6,7 @@ import Signin from "./pages/Signin";
 import Users from "./pages/Users";
 import Clients from "./pages/Clients";
 import CreateUser from "./pages/CreateUser";
+import User from "./pages/User";
 
 const App = () => {
   return (
@@ -48,6 +49,14 @@ const App = () => {
           element={
             <PrivateRoute>
               <CreateUser />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/user/:userId"
+          element={
+            <PrivateRoute>
+              <User />
             </PrivateRoute>
           }
         />

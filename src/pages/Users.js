@@ -3,7 +3,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import { useEffect, useState } from "react";
 import { firestore } from "../firebase/config";
 import { Link } from "react-router-dom";
-import { userDelete } from "../firebase/user"; 
+import { userDelete } from "../firebase/user";
 
 const columns = [
   { field: "id", headerName: "ID", width: 90 },
@@ -40,7 +40,7 @@ const columns = [
     renderCell: (params) => {
       return (
         <div>
-          <Link to="/view-user" style={{ textDecoration: "none" }}>
+          <Link to={`/user/${params.row.id}`} style={{ textDecoration: "none" }}>
             <Button color="primary">View</Button>
           </Link>
           <Button
