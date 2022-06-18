@@ -14,6 +14,7 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import GroupsIcon from "@mui/icons-material/Groups";
 import PeopleIcon from "@mui/icons-material/People";
+import HomeIcon from '@mui/icons-material/Home';
 import { ExitToApp } from "@mui/icons-material";
 import { signout } from "../firebase/auth";
 import DrawerItem from "./DraweItem";
@@ -99,7 +100,7 @@ export default function MiniDrawer({ children }) {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open} color="transparent">
+      <AppBar position="fixed" open={open} color="primary">
         <Toolbar>
           <IconButton
             color="inherit"
@@ -116,7 +117,7 @@ export default function MiniDrawer({ children }) {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Lionesse Admin
           </Typography>
-          <IconButton color="warning" size="medium" onClick={signout}>
+          <IconButton color="default" size="medium" onClick={signout}>
             <ExitToApp />
           </IconButton>
         </Toolbar>
@@ -133,6 +134,12 @@ export default function MiniDrawer({ children }) {
         </DrawerHeader>
         <Divider />
         <List>
+          <DrawerItem
+            key="home"
+            icon={<HomeIcon size="small" />}
+            text="Home"
+            open={open}
+          />
           <DrawerItem
             key="users"
             icon={<PeopleIcon size="small" />}

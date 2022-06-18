@@ -3,6 +3,8 @@ import { PrivateRoute, PublicRoute } from "./hoc";
 import "./App.css";
 import Dashboard from "./pages/Dashboard";
 import Signin from "./pages/Signin";
+import Users from "./pages/Users";
+import Clients from "./pages/Clients";
 
 const App = () => {
   return (
@@ -21,6 +23,22 @@ const App = () => {
           element={
             <PrivateRoute>
               <Dashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/users"
+          element={
+            <PrivateRoute>
+              <Users />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/clients"
+          element={
+            <PrivateRoute>
+              <Clients />
             </PrivateRoute>
           }
         />
