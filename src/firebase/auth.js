@@ -12,11 +12,6 @@ export const signin = async (email, password) => {
 /**
  * Signs out a user
  */
-export const signout = () => {
-  return auth
-    .signOut()
-    .then(() => {})
-    .catch((error) => {
-      throw new Error(error.message);
-    });
+export const signout = async () => {
+  return auth.signOut();
 };

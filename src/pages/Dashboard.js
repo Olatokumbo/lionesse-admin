@@ -11,9 +11,7 @@ const Dashboard = () => {
         alignItems: "center",
         justifyContent: "center",
       }}
-    >
-      <Typography>Main Dashboard Page</Typography>
-    </Grid>
+    ></Grid>
   );
 };
 
