@@ -1,4 +1,4 @@
-import { firestore } from "./config";
+import firebase, { firestore } from "./config";
 
 /**
  * Finds a user by its Id
@@ -30,4 +30,23 @@ export const users = async () => {
 export const totalUsers = async () => {
   const users = await firestore.collection("users").get();
   return users.size;
+};
+
+export const userCreate = (
+  firstName,
+  lastName,
+  phone,
+  password,
+  role,
+  email
+) => {
+  return firestore.collection("users").add({
+    firstName,
+    lastName,
+    phone,
+    password,
+    role,
+    email,
+    timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
+  });
 };

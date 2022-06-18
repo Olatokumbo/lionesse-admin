@@ -5,6 +5,7 @@ import Dashboard from "./pages/Dashboard";
 import Signin from "./pages/Signin";
 import Users from "./pages/Users";
 import Clients from "./pages/Clients";
+import CreateUser from "./pages/CreateUser";
 
 const App = () => {
   return (
@@ -39,6 +40,14 @@ const App = () => {
           element={
             <PrivateRoute>
               <Clients />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/create-user"
+          element={
+            <PrivateRoute>
+              <CreateUser />
             </PrivateRoute>
           }
         />
