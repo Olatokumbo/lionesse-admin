@@ -34,7 +34,7 @@ const CreateUser = () => {
   return (
     <Grid>
       <Typography fontWeight="bold" fontSize={25}>
-        Create
+        Create User
       </Typography>
       <Box
         sx={{
@@ -105,9 +105,6 @@ const CreateUser = () => {
             margin="normal"
             value={role}
             onChange={(e) => setRole(e.target.value)}
-            // value={age}
-            // label="Age"
-            // onChange={handleChange}
             size="small"
           >
             <MenuItem value={"OWNER"}>Owner</MenuItem>

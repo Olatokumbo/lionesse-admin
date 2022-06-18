@@ -3,6 +3,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import { useEffect, useState } from "react";
 import { firestore } from "../firebase/config";
 import { Link } from "react-router-dom";
+import { userDelete } from "../firebase/user"; 
 
 const columns = [
   { field: "id", headerName: "ID", width: 90 },
@@ -36,14 +37,21 @@ const columns = [
     headerName: "Action",
     sortable: false,
     width: 160,
-    renderCell: (params) => (
-      <div>
-        <Link to="/view-user" style={{ textDecoration: "none" }}>
-          <Button color="primary">View</Button>
-        </Link>
-        <Button color="error">Delete</Button>
-      </div>
-    ),
+    renderCell: (params) => {
+      return (
+        <div>
+          <Link to="/view-user" style={{ textDecoration: "none" }}>
+            <Button color="primary">View</Button>
+          </Link>
+          <Button
+            color="error"
+            onClick={async () => await userDelete(params.row.id)}
+          >
+            Delete
+          </Button>
+        </div>
+      );
+    },
   },
 ];
 
@@ -60,7 +68,6 @@ const Users = () => {
     return unsub;
   }, []);
 
-  console.log(users);
   return (
     <Grid>
       <Box
@@ -77,7 +84,7 @@ const Users = () => {
           Users
         </Typography>
         <Link to="/create-user" style={{ textDecoration: "none" }}>
-          <Button>Create User</Button>
+          <Button>New User</Button>
         </Link>
       </Box>
       <div style={{ height: "70vh", width: "100%" }}>

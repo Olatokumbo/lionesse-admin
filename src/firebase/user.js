@@ -50,3 +50,7 @@ export const userCreate = (
     timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
   });
 };
+
+export const userDelete = (id) => {
+  return firestore.collection("users").doc(id).delete();
+};
