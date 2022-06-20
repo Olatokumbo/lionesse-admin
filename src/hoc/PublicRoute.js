@@ -5,9 +5,9 @@ import Loading from "../pages/Loading";
 export const PublicRoute = ({ children }) => {
   const { isAuth, loading } = useAuth();
 
-  if (!loading && isAuth) {
+  // if (!loading && isAuth) {
     return isAuth ? <Navigate to="/home" /> : children;
-  }
+  // }
 
-  return <Loading />;
+  // return <Loading />;
 };

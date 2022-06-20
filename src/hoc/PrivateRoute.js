@@ -5,8 +5,8 @@ import Loading from "../pages/Loading";
 
 export const PrivateRoute = ({ children }) => {
   const { isAuth, loading } = useAuth();
-  if (!loading && isAuth) {
-    return isAuth ? <Drawer>{children}</Drawer> : <Navigate to="/" />;
-  }
-  return <Loading/>
+  // if (!loading && isAuth) {
+  return isAuth ? <Drawer>{children}</Drawer> : <Navigate to="/" />;
+  // }
+  // return <Loading/>
 };
