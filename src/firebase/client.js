@@ -1,4 +1,4 @@
-import { firestore } from "./config";
+import firebase, { firestore } from "./config";
 
 /**
  * Finds a client by its Id
@@ -33,4 +33,29 @@ export const clients = async () => {
 export const totalClients = async () => {
   const clients = await firestore.collection("clients").get();
   return clients.size;
+};
+
+export const clientCreate = (
+  firstName,
+  lastName,
+  email,
+  age,
+  sex,
+  callCenter,
+  clientClass,
+  memberId,
+  phone
+) => {
+  return firestore.collection("clients").add({
+    firstName,
+    lastName,
+    email,
+    age,
+    sex,
+    callCenter,
+    clientClass,
+    memberId,
+    phone, 
+    timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
+  });
 };

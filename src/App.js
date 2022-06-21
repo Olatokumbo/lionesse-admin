@@ -4,9 +4,11 @@ import "./App.css";
 import Dashboard from "./pages/Dashboard";
 import Signin from "./pages/Signin";
 import Users from "./pages/Users";
-import Clients from "./pages/Clients";
+import Clients from "./pages/Clients/Clients";
+import CreateClient from "./pages/Clients/CreateClient";
 import CreateUser from "./pages/CreateUser";
 import User from "./pages/User";
+import Client from "./pages/Clients/Client";
 
 const App = () => {
   return (
@@ -53,10 +55,26 @@ const App = () => {
           }
         />
         <Route
+          path="/create-client"
+          element={
+            <PrivateRoute>
+              <CreateClient />
+            </PrivateRoute>
+          }
+        />
+        <Route
           path="/user/:userId"
           element={
             <PrivateRoute>
               <User />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/client/:clientId"
+          element={
+            <PrivateRoute>
+              <Client />
             </PrivateRoute>
           }
         />
