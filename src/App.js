@@ -53,7 +53,7 @@ const App = () => {
         />
         <Route
           path="/products"
-          element={<PrivateRoute component={<Locations />} />}
+          element={<PrivateRoute component={<Products />} />}
         />
         <Route
           path="/create-product"
