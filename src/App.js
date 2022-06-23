@@ -13,106 +13,51 @@ import User from "./pages/Users/User";
 import Client from "./pages/Clients/Client";
 import CreateLocation from "./pages/Locations/CreateLocation";
 import CreateProduct from "./pages/Products/CreateProduct";
-
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path="/"
-          element={
-            <PublicRoute>
-              <Signin />
-            </PublicRoute>
-          }
-        />
+        <Route path="/" element={<PublicRoute component={<Signin />} />} />
         <Route
           path="/home"
-          element={
-            <PrivateRoute>
-              <Dashboard />
-            </PrivateRoute>
-          }
+          element={<PrivateRoute component={<Dashboard />} />}
         />
+        <Route path="/users" element={<PrivateRoute component={<Users />} />} />
         <Route
-          path="/users"
-          element={
-            <PrivateRoute>
-              <Users />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/clients"
-          element={
-            <PrivateRoute>
-              <Clients />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/locations"
-          element={
-            <PrivateRoute>
-              <Locations />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/products"
-          element={
-            <PrivateRoute>
-              <Products />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/create-product"
-          element={
-            <PrivateRoute>
-              <CreateProduct />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/create-location"
-          element={
-            <PrivateRoute>
-              <CreateLocation />
-            </PrivateRoute>
-          }
+          path="/user/:userId"
+          element={<PrivateRoute component={<User />} />}
         />
         <Route
           path="/create-user"
-          element={
-            <PrivateRoute>
-              <CreateUser />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/create-client"
-          element={
-            <PrivateRoute>
-              <CreateClient />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/user/:userId"
-          element={
-            <PrivateRoute>
-              <User />
-            </PrivateRoute>
-          }
+          element={<PrivateRoute component={<CreateUser />} />}
         />
         <Route
           path="/client/:clientId"
-          element={
-            <PrivateRoute>
-              <Client />
-            </PrivateRoute>
-          }
+          element={<PrivateRoute component={<Client />} />}
+        />
+        <Route
+          path="/clients"
+          element={<PrivateRoute component={<Clients />} />}
+        />
+        <Route
+          path="/create-client"
+          element={<PrivateRoute component={<CreateClient />} />}
+        />
+        <Route
+          path="/locations"
+          element={<PrivateRoute component={<Locations />} />}
+        />
+        <Route
+          path="/create-location"
+          element={<PrivateRoute component={<CreateLocation />} />}
+        />
+        <Route
+          path="/products"
+          element={<PrivateRoute component={<Locations />} />}
+        />
+        <Route
+          path="/create-product"
+          element={<PrivateRoute component={<CreateProduct />} />}
         />
       </Routes>
     </BrowserRouter>
