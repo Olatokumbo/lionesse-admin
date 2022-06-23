@@ -4,11 +4,13 @@ import "./App.css";
 import Dashboard from "./pages/Dashboard";
 import Signin from "./pages/Signin";
 import Users from "./pages/Users";
-import Clients from "./pages/Clients/Clients";
+import Clients from "./pages/Clients";
+import Locations from "./pages/Locations";
 import CreateClient from "./pages/Clients/CreateClient";
-import CreateUser from "./pages/CreateUser";
-import User from "./pages/User";
+import CreateUser from "./pages/Users/CreateUser";
+import User from "./pages/Users/User";
 import Client from "./pages/Clients/Client";
+import CreateLocation from "./pages/Locations/CreateLocation";
 
 const App = () => {
   return (
@@ -43,6 +45,22 @@ const App = () => {
           element={
             <PrivateRoute>
               <Clients />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/locations"
+          element={
+            <PrivateRoute>
+              <Locations />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/create-location"
+          element={
+            <PrivateRoute>
+              <CreateLocation />
             </PrivateRoute>
           }
         />

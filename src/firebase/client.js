@@ -29,12 +29,26 @@ export const clients = async () => {
     throw error;
   }
 };
-
+/**
+ * Gets the Total Number of Clients
+ */
 export const totalClients = async () => {
   const clients = await firestore.collection("clients").get();
   return clients.size;
 };
 
+/**
+ * Creates A new Client
+ * @param {*} firstName
+ * @param {*} lastName
+ * @param {*} email
+ * @param {*} age
+ * @param {*} sex
+ * @param {*} callCenter
+ * @param {*} clientClass
+ * @param {*} memberId
+ * @param {*} phone
+ */
 export const clientCreate = (
   firstName,
   lastName,
@@ -55,7 +69,11 @@ export const clientCreate = (
     callCenter,
     clientClass,
     memberId,
-    phone, 
+    phone,
     timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
   });
+};
+
+export const clientDelete = (id) => {
+  return firestore.collection("clients").doc(id).delete();
 };

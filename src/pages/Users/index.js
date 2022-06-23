@@ -1,37 +1,13 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { useEffect, useState } from "react";
-import { firestore } from "../firebase/config";
+import { firestore } from "../../firebase/config";
 import { Link } from "react-router-dom";
-import { userDelete } from "../firebase/user";
+import { userDelete } from "../../firebase/user";
+import { UserColumns } from "../../utils/table-columns";
 
 const columns = [
-  { field: "id", headerName: "ID", width: 90 },
-  { field: "firstName", headerName: "First name", width: 100 },
-  { field: "lastName", headerName: "Last name", width: 100 },
-  {
-    field: "email",
-    headerName: "Email",
-    type: "number",
-    width: 160,
-  },
-  {
-    field: "password",
-    headerName: "Password",
-    width: 100,
-  },
-  {
-    field: "phone",
-    headerName: "Phone",
-    sortable: false,
-    width: 150,
-  },
-  {
-    field: "role",
-    headerName: "Role",
-    sortable: false,
-    width: 160,
-  },
+  ...UserColumns,
   {
     field: "action",
     headerName: "Action",
@@ -40,7 +16,10 @@ const columns = [
     renderCell: (params) => {
       return (
         <div>
-          <Link to={`/user/${params.row.id}`} style={{ textDecoration: "none" }}>
+          <Link
+            to={`/user/${params.row.id}`}
+            style={{ textDecoration: "none" }}
+          >
             <Button color="primary">View</Button>
           </Link>
           <Button
@@ -93,7 +72,6 @@ const Users = () => {
           columns={columns}
           pageSize={50}
           rowsPerPageOptions={[50, 100]}
-          checkboxSelection
         />
       </div>
     </Grid>

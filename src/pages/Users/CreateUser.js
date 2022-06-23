@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 
 import { useState } from "react";
-import { userCreate } from "../firebase/user";
+import { userCreate } from "../../firebase/user";
 import { useNavigate } from "react-router-dom";
 
 const CreateUser = () => {

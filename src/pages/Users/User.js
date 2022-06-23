@@ -1,6 +1,6 @@
 import { Avatar, Grid, Typography, Box, Paper } from "@mui/material";
 import { useEffect, useState } from "react";
-import { getUserById } from "../firebase/user";
+import { getUserById } from "../../firebase/user";
 import { useParams } from "react-router-dom";
 
 const User = () => {

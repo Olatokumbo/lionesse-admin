@@ -14,9 +14,10 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import GroupsIcon from "@mui/icons-material/Groups";
 import PeopleIcon from "@mui/icons-material/People";
-import HomeIcon from '@mui/icons-material/Home';
+import HomeIcon from "@mui/icons-material/Home";
 import { ExitToApp } from "@mui/icons-material";
 import { signout } from "../firebase/auth";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 import DrawerItem from "./DraweItem";
 const drawerWidth = 240;
 
@@ -150,6 +151,12 @@ export default function MiniDrawer({ children }) {
             key="clients"
             icon={<GroupsIcon size="small" />}
             text="Clients"
+            open={open}
+          />
+          <DrawerItem
+            key="locations"
+            icon={<LocationOnIcon size="small" />}
+            text="Locations"
             open={open}
           />
         </List>

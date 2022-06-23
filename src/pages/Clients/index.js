@@ -3,52 +3,11 @@ import { useEffect, useState } from "react";
 import { Box, Button, Grid, Typography } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { firestore } from "../../firebase/config";
+import { ClientColumns } from "../../utils/table-columns";
+import { clientDelete } from "../../firebase/client";
 
 const columns = [
-  { field: "id", headerName: "ID", width: 90 },
-  { field: "firstName", headerName: "First name", width: 100 },
-  { field: "lastName", headerName: "Last name", width: 100 },
-  {
-    field: "email",
-    headerName: "Email",
-    type: "number",
-    width: 160,
-  },
-  {
-    field: "age",
-    headerName: "Age",
-    width: 100,
-  },
-  {
-    field: "sex",
-    headerName: "Sex",
-    sortable: false,
-    width: 150,
-  },
-  {
-    field: "callCenter",
-    headerName: "Call Center",
-    sortable: false,
-    width: 160,
-  },
-  {
-    field: "clientClass",
-    headerName: "Client Class",
-    sortable: false,
-    width: 160,
-  },
-  {
-    field: "memberId",
-    headerName: "Member ID",
-    sortable: false,
-    width: 160,
-  },
-  {
-    field: "phone",
-    headerName: "Phone",
-    sortable: false,
-    width: 160,
-  },
+  ...ClientColumns,
   {
     field: "action",
     headerName: "Action",
@@ -57,12 +16,15 @@ const columns = [
     renderCell: (params) => {
       return (
         <div>
-          <Link to={`/client/${params.row.id}`} style={{ textDecoration: "none" }}>
+          <Link
+            to={`/client/${params.row.id}`}
+            style={{ textDecoration: "none" }}
+          >
             <Button color="primary">View</Button>
           </Link>
           <Button
             color="error"
-            //onClick={async () => await userDelete(params.row.id)}
+            onClick={async () => await clientDelete(params.row.id)}
           >
             Delete
           </Button>
@@ -75,13 +37,15 @@ const columns = [
 const Clients = () => {
   const [clients, setUsers] = useState([]);
   useEffect(() => {
-    const unsub = firestore.collection("clients").onSnapshot((querySnapshot) => {
-      var data = [];
-      querySnapshot.forEach((doc) => {
-        data.push({ id: doc.id, ...doc.data() });
+    const unsub = firestore
+      .collection("clients")
+      .onSnapshot((querySnapshot) => {
+        var data = [];
+        querySnapshot.forEach((doc) => {
+          data.push({ id: doc.id, ...doc.data() });
+        });
+        setUsers(data);
       });
-      setUsers(data);
-    });
     return unsub;
   }, []);
   return (
