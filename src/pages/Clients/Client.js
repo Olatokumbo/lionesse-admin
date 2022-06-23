@@ -2,7 +2,6 @@ import { Avatar, Grid, Typography, Box, Paper } from "@mui/material";
 import { useEffect, useState } from "react";
 import { getClientById } from "../../firebase/client";
 import { useParams } from "react-router-dom";
-import firebase, { firestore } from "../../firebase/config";
 
 const Client = () => {
   const params = useParams();

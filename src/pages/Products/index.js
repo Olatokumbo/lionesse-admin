@@ -1,11 +1,12 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
-import { userDelete } from "../../firebase/user";
-import { UserColumns } from "../../utils/table-columns";
+import { productDelete } from "../../firebase/product";
+import { ProductColumns } from "../../utils/table-columns";
 import useLists from "../../hooks/useLists";
+
 const columns = [
-  ...UserColumns,
+  ...ProductColumns,
   {
     field: "action",
     headerName: "Action",
@@ -13,28 +14,19 @@ const columns = [
     width: 160,
     renderCell: (params) => {
       return (
-        <div>
-          <Link
-            to={`/user/${params.row.id}`}
-            style={{ textDecoration: "none" }}
-          >
-            <Button color="primary">View</Button>
-          </Link>
-          <Button
-            color="error"
-            onClick={async () => await userDelete(params.row.id)}
-          >
-            Delete
-          </Button>
-        </div>
+        <Button
+          color="error"
+          onClick={async () => await productDelete(params.row.id)}
+        >
+          Delete
+        </Button>
       );
     },
   },
 ];
 
-const Users = () => {
-  const users = useLists("users");
-
+const Products = () => {
+  const products = useLists("products");
   return (
     <Grid>
       <Box
@@ -48,22 +40,23 @@ const Users = () => {
         }}
       >
         <Typography fontWeight="bold" fontSize={25}>
-          Users
+          Products
         </Typography>
-        <Link to="/create-user" style={{ textDecoration: "none" }}>
-          <Button>New User</Button>
+        <Link to="/create-product" style={{ textDecoration: "none" }}>
+          <Button>New Product</Button>
         </Link>
       </Box>
       <div style={{ height: "70vh", width: "100%" }}>
         <DataGrid
-          rows={users}
+          rows={products}
           columns={columns}
           pageSize={50}
           rowsPerPageOptions={[50, 100]}
+          //   checkboxSelection
         />
       </div>
     </Grid>
   );
 };
 
-export default Users;
+export default Products;

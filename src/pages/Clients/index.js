@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
 import { Box, Button, Grid, Typography } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
-import { firestore } from "../../firebase/config";
 import { ClientColumns } from "../../utils/table-columns";
 import { clientDelete } from "../../firebase/client";
+import useLists from "../../hooks/useLists";
 
 const columns = [
   ...ClientColumns,
@@ -35,19 +34,8 @@ const columns = [
 ];
 
 const Clients = () => {
-  const [clients, setUsers] = useState([]);
-  useEffect(() => {
-    const unsub = firestore
-      .collection("clients")
-      .onSnapshot((querySnapshot) => {
-        var data = [];
-        querySnapshot.forEach((doc) => {
-          data.push({ id: doc.id, ...doc.data() });
-        });
-        setUsers(data);
-      });
-    return unsub;
-  }, []);
+  const clients = useLists("clients");
+
   return (
     <Grid>
       <Box
@@ -73,7 +61,7 @@ const Clients = () => {
           columns={columns}
           pageSize={50}
           rowsPerPageOptions={[50, 100]}
-          checkboxSelection
+          // checkboxSelection
         />
       </div>
     </Grid>

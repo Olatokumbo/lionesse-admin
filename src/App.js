@@ -6,11 +6,13 @@ import Signin from "./pages/Signin";
 import Users from "./pages/Users";
 import Clients from "./pages/Clients";
 import Locations from "./pages/Locations";
+import Products from "./pages/Products";
 import CreateClient from "./pages/Clients/CreateClient";
 import CreateUser from "./pages/Users/CreateUser";
 import User from "./pages/Users/User";
 import Client from "./pages/Clients/Client";
 import CreateLocation from "./pages/Locations/CreateLocation";
+import CreateProduct from "./pages/Products/CreateProduct";
 
 const App = () => {
   return (
@@ -53,6 +55,22 @@ const App = () => {
           element={
             <PrivateRoute>
               <Locations />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/products"
+          element={
+            <PrivateRoute>
+              <Products />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/create-product"
+          element={
+            <PrivateRoute>
+              <CreateProduct />
             </PrivateRoute>
           }
         />

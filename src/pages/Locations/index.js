@@ -1,10 +1,9 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
-import { useEffect, useState } from "react";
-import { firestore } from "../../firebase/config";
 import { Link } from "react-router-dom";
 import { locationDelete } from "../../firebase/location";
 import { LocationColumns } from "../../utils/table-columns";
+import useLists from "../../hooks/useLists";
 
 const columns = [
   ...LocationColumns,
@@ -26,20 +25,8 @@ const columns = [
   },
 ];
 
-const Users = () => {
-  const [locations, setLocations] = useState([]);
-  useEffect(() => {
-    const unsub = firestore
-      .collection("locations")
-      .onSnapshot((querySnapshot) => {
-        var data = [];
-        querySnapshot.forEach((doc) => {
-          data.push({ id: doc.id, ...doc.data() });
-        });
-        setLocations(data);
-      });
-    return unsub;
-  }, []);
+const Locations = () => {
+  const locations = useLists("locations");
 
   return (
     <Grid>
@@ -73,4 +60,4 @@ const Users = () => {
   );
 };
 
-export default Users;
+export default Locations;

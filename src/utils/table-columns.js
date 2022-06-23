@@ -78,3 +78,23 @@ export const LocationColumns = [
   { field: "id", headerName: "ID", width: 290 },
   { field: "name", headerName: "Name", width: 300 },
 ];
+
+export const ProductColumns = [
+  { field: "id", headerName: "ID", width: 230 },
+  { field: "name", headerName: "Name", width: 200 },
+  {
+    field: "brand",
+    headerName: "Brand",
+    width: 160,
+  },
+  {
+    field: "minPrice",
+    headerName: "Min Price",
+    width: 160,
+  },
+  {
+    field: "maxPrice",
+    headerName: "Max Price",
+    width: 160,
+  },
+];

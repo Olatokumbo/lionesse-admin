@@ -18,6 +18,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import { ExitToApp } from "@mui/icons-material";
 import { signout } from "../firebase/auth";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import InventoryIcon from "@mui/icons-material/Inventory";
 import DrawerItem from "./DraweItem";
 const drawerWidth = 240;
 
@@ -157,6 +158,12 @@ export default function MiniDrawer({ children }) {
             key="locations"
             icon={<LocationOnIcon size="small" />}
             text="Locations"
+            open={open}
+          />
+          <DrawerItem
+            key="products"
+            icon={<InventoryIcon size="small" />}
+            text="Products"
             open={open}
           />
         </List>
