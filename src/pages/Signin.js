@@ -54,7 +54,7 @@ export default function SignIn() {
           sm={4}
           md={7}
           sx={{
-            backgroundImage: "url(https://source.unsplash.com/random)",
+            backgroundImage: "url(https://images.unsplash.com/photo-1612817288484-6f916006741a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YmVhdXR5JTIwcHJvZHVjdHN8ZW58MHx8MHx8&w=1000&q=80)",
             backgroundRepeat: "no-repeat",
             backgroundColor: (t) =>
               t.palette.mode === "light"
@@ -110,10 +110,6 @@ export default function SignIn() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
-              />
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
               />
               <Button
                 type="submit"
