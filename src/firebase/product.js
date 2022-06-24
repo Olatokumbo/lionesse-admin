@@ -17,3 +17,11 @@ export const productUpdate = (id, name) => {
 export const productDelete = (id) => {
   return firestore.collection("products").doc(id).delete();
 };
+
+/**
+ * Gets the Total Number of Products
+ */
+export const totalProducts = async () => {
+  const products = await firestore.collection("clients").get();
+  return products.size;
+};

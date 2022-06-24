@@ -98,3 +98,23 @@ export const ProductColumns = [
     width: 160,
   },
 ];
+
+export const SalesColumns = [
+  { field: "id", headerName: "Sales Number", width: 230 },
+  { field: "name", headerName: "Client  ", width: 200 },
+  {
+    field: "brand",
+    headerName: "Products",
+    width: 160,
+  },
+  {
+    field: "minPrice",
+    headerName: "Bought Machine",
+    width: 160,
+  },
+  {
+    field: "maxPrice",
+    headerName: "Warranty Id",
+    width: 160,
+  },
+];
