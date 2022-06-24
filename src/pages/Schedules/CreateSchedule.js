@@ -59,7 +59,7 @@ const CreateSchedule = () => {
             control={
               <Checkbox
                 value={facial}
-                onChange={(e) => console.log(e.target.checked)}
+                onChange={(e) => setFacial(e.target.checked)}
               />
             }
             label="Facial"
