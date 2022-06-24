@@ -99,9 +99,39 @@ export const ProductColumns = [
   },
 ];
 
+export const ScheduleColumns = [
+  { field: "id", headerName: "ID", width: 230 },
+  {
+    field: "client",
+    headerName: "Client",
+    width: 160,
+  },
+  { field: "location", headerName: "Location", width: 200 },
+  {
+    field: "facial",
+    headerName: "Facial",
+    width: 120,
+  },
+  {
+    field: "rf",
+    headerName: "RF",
+    width: 120,
+  },
+  {
+    field: "cocoon",
+    headerName: "Cocoon",
+    width: 120,
+  },
+  {
+    field: "ems",
+    headerName: "EMS",
+    width: 120,
+  },
+];
+
 export const SalesColumns = [
   { field: "id", headerName: "Sales Number", width: 230 },
-  { field: "name", headerName: "Client  ", width: 200 },
+  { field: "name", headerName: "Client", width: 200 },
   {
     field: "brand",
     headerName: "Products",

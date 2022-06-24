@@ -1,18 +1,15 @@
 import { firestore } from "../firebase/config";
-export const scheduleCreate = (
-  locationId,
-  clientId,
-  facial,
-  RF,
-  Cocoon,
-  EMS
-) => {
+export const scheduleCreate = (location, client, facial, rf, cocoon, ems) => {
   return firestore.collection("schedules").add({
-    locationId,
-    clientId,
+    location,
+    client,
     facial,
-    RF,
-    Cocoon,
-    EMS,
+    rf,
+    cocoon,
+    ems,
   });
+};
+
+export const scheduleDelete = (id) => {
+  return firestore.collection("schedules").doc(id).delete();
 };

@@ -1,41 +1,37 @@
 import {
   Grid,
   Typography,
-  TextField,
   Box,
   Button,
   Checkbox,
   FormGroup,
   FormControlLabel,
-  Autocomplete,
 } from "@mui/material";
 
 import { useState } from "react";
-import { productCreate } from "../../firebase/product";
+import { scheduleCreate } from "../../firebase/schedule";
 import { useNavigate } from "react-router-dom";
 import AutocompleteField from "../../components/AutocompleteField";
-import useLists from "../../hooks/useLists";
 
 const CreateSchedule = () => {
-  //   const locations = useLists("locations");
-  //   const clients = useLists("clients");
-
-  //   console.log(locations);
-
   let navigate = useNavigate();
-  const [name, setName] = useState("");
-  const [brand, setBrand] = useState("LIONESSE");
-  const [minPrice, setMinPrice] = useState(1);
-  const [maxPrice, setMaxPrice] = useState(2);
+  const [location, setLocation] = useState("");
+  const [client, setClient] = useState("");
+  const [facial, setFacial] = useState(false);
+  const [rf, setRf] = useState(false);
+  const [cocoon, setCocoon] = useState(false);
+  const [ems, setEms] = useState(false);
 
   const submit = async () => {
     try {
-      await productCreate(name, brand, minPrice, maxPrice);
-      return navigate("/products");
+      await scheduleCreate(location, client, facial, rf, cocoon, ems);
+      return navigate("/schedules");
     } catch (error) {
       console.log(error);
     }
   };
+
+  console.log(ems);
   return (
     <Grid>
       <Typography fontWeight="bold" fontSize={25}>
@@ -49,20 +45,49 @@ const CreateSchedule = () => {
         }}
       >
         <AutocompleteField
-          name="locations"
-          onChange={(e) => console.log(e.target.textContent)}
-          getOptionLabel={(option) => option.name}
+          name="clients"
+          getOptionLabel={(option) => option.firstName + " " + option.lastName}
+          onInputChange={(e) => setClient(e.target.innerText)}
         />
         <AutocompleteField
-          name="clients"
-          onChange={(e) => console.log(e.target.textContent)}
-          getOptionLabel={(option) => option.firstName + " " + option.lastName}
+          name="locations"
+          getOptionLabel={(option) => option.name}
+          onInputChange={(e) => setLocation(e.target.innerText)}
         />
         <FormGroup>
-          <FormControlLabel control={<Checkbox />} label="Facial" />
-          <FormControlLabel control={<Checkbox />} label="RF" />
-          <FormControlLabel control={<Checkbox />} label="Cocoon" />
-          <FormControlLabel control={<Checkbox />} label="EMS" />
+          <FormControlLabel
+            control={
+              <Checkbox
+                value={facial}
+                onChange={(e) => console.log(e.target.checked)}
+              />
+            }
+            label="Facial"
+          />
+          <FormControlLabel
+            control={
+              <Checkbox value={rf} onChange={(e) => setRf(e.target.checked)} />
+            }
+            label="RF"
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                value={cocoon}
+                onChange={(e) => setCocoon(e.target.checked)}
+              />
+            }
+            label="Cocoon"
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                value={ems}
+                onChange={(e) => setEms(e.target.checked)}
+              />
+            }
+            label="EMS"
+          />
         </FormGroup>
         <Button
           sx={{ marginY: "1rem", width: "fit-content" }}

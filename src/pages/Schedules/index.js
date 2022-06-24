@@ -1,12 +1,12 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
-import { productDelete } from "../../firebase/product";
-import { ProductColumns } from "../../utils/table-columns";
+import { scheduleDelete } from "../../firebase/schedule";
+import { ScheduleColumns } from "../../utils/table-columns";
 import useLists from "../../hooks/useLists";
 
 const columns = [
-  ...ProductColumns,
+  ...ScheduleColumns,
   {
     field: "action",
     headerName: "Action",
@@ -16,7 +16,7 @@ const columns = [
       return (
         <Button
           color="error"
-          onClick={async () => await productDelete(params.row.id)}
+          onClick={async () => await scheduleDelete(params.row.id)}
         >
           Delete
         </Button>
