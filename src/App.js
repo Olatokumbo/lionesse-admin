@@ -13,6 +13,8 @@ import User from "./pages/Users/User";
 import Client from "./pages/Clients/Client";
 import CreateLocation from "./pages/Locations/CreateLocation";
 import CreateProduct from "./pages/Products/CreateProduct";
+import Schedules from "./pages/Schedules";
+import CreateSchedule from "./pages/Schedules/CreateSchedule";
 const App = () => {
   return (
     <BrowserRouter>
@@ -43,6 +45,15 @@ const App = () => {
           path="/create-client"
           element={<PrivateRoute component={<CreateClient />} />}
         />
+        <Route
+          path="/schedules"
+          element={<PrivateRoute component={<Schedules />} />}
+        />
+        <Route
+          path="/create-schedule"
+          element={<PrivateRoute component={<CreateSchedule />} />}
+        />
+
         <Route
           path="/locations"
           element={<PrivateRoute component={<Locations />} />}

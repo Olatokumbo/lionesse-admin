@@ -19,7 +19,8 @@ import { ExitToApp } from "@mui/icons-material";
 import { signout } from "../firebase/auth";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import InventoryIcon from "@mui/icons-material/Inventory";
-import DrawerItem from "./DraweItem";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import DrawerItem from "./DrawerItem";
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -164,6 +165,12 @@ export default function MiniDrawer({ children }) {
             key="products"
             icon={<InventoryIcon size="small" />}
             text="Products"
+            open={open}
+          />
+          <DrawerItem
+            key="schedules"
+            icon={<AccessTimeIcon size="small" />}
+            text="Schedules"
             open={open}
           />
         </List>

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const DrawerItem = ({ icon, text, open }) => {
   return (
     <Link
-      to={`/${text.toLowerCase()}`}
+      to={`/${text.toLowerCase()}`.replace(" ", "-")}
       style={{ textDecoration: "none", color: "black" }}
     >
       <ListItem disablePadding sx={{ display: "block" }}>
@@ -22,11 +22,15 @@ const DrawerItem = ({ icon, text, open }) => {
               minWidth: 0,
               mr: open ? 3 : "auto",
               justifyContent: "center",
+              color: "#4287f5",
             }}
           >
             {icon}
           </ListItemIcon>
-          <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+          <ListItemText
+            primary={text}
+            sx={{ opacity: open ? 1 : 0, color: "#053480", fontWeight: "bold" }}
+          />
         </ListItemButton>
       </ListItem>
     </Link>
