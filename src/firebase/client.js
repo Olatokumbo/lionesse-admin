@@ -58,7 +58,8 @@ export const clientCreate = (
   callCenter,
   clientClass,
   memberId,
-  phone
+  phone,
+  address
 ) => {
   return firestore.collection("clients").add({
     firstName,
@@ -70,6 +71,7 @@ export const clientCreate = (
     clientClass,
     memberId,
     phone,
+    address,
     timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
   });
 };
