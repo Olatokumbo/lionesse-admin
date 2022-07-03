@@ -8,7 +8,9 @@ import {
   MenuItem,
   InputLabel,
   Button,
-  
+  Switch,
+  FormControlLabel,
+  Rating,
 } from "@mui/material";
 import { useState } from "react";
 import { clientCreate } from "../../firebase/client";
@@ -21,9 +23,9 @@ const CreateClient = () => {
   const [email, setEmail] = useState("");
   const [age, setAge] = useState("");
   const [sex, setSex] = useState("MALE");
-  const [callCenter, setCallCenter] = useState("");
-  const [clientClass, setClientClass] = useState("");
-  const [memberId, setMemberId] = useState("");
+  const [callCenter, setCallCenter] = useState(true);
+  const [clientClass, setClientClass] = useState("A");
+  const [ratings, setRatings] = useState(3);
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
 
@@ -37,7 +39,7 @@ const CreateClient = () => {
         sex,
         callCenter,
         clientClass,
-        memberId,
+        ratings,
         phone,
         address
       );
@@ -97,7 +99,7 @@ const CreateClient = () => {
           onChange={(e) => setAge(e.target.value)}
           size="small"
         />
-        <FormControl>
+        <FormControl margin="normal">
           {/* <InputLabel id="demo-simple-select-disabled-label">Comapny Role</InputLabel> */}
           <Select
             labelId="demo-simple-select-label"
@@ -114,14 +116,15 @@ const CreateClient = () => {
           </Select>
         </FormControl>
 
-        <TextField
-          id="outlined-basic"
+        <FormControlLabel
+          control={
+            <Switch
+              defaultChecked
+              value={callCenter}
+              onChange={(e) => setCallCenter(e.target.value)}
+            />
+          }
           label="Call Center"
-          variant="outlined"
-          margin="normal"
-          value={callCenter}
-          onChange={(e) => setCallCenter(e.target.value)}
-          size="small"
         />
 
         <TextField
@@ -134,13 +137,14 @@ const CreateClient = () => {
           size="small"
         />
 
-        <FormControl fullWidth>
+        <FormControl fullWidth margin="normal">
           <InputLabel id="demo-simple-select-label">Client Class</InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             value={clientClass}
             label="Client Class"
+            size="small"
             onChange={(e) => setClientClass(e.target.value)}
           >
             <MenuItem value={"A"}>A</MenuItem>
@@ -150,17 +154,6 @@ const CreateClient = () => {
             <MenuItem value={"E"}>E</MenuItem>
           </Select>
         </FormControl>
-
-        <TextField
-          id="outlined-basic"
-          label="Member Id"
-          variant="outlined"
-          margin="normal"
-          value={memberId}
-          onChange={(e) => setMemberId(e.target.value)}
-          // sx={{ marginX: 3 }}
-          size="small"
-        />
         <TextField
           id="outlined-basic"
           label="Phone"
@@ -169,6 +162,14 @@ const CreateClient = () => {
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
           size="small"
+        />
+
+        <Rating
+          name="simple-controlled"
+          value={ratings}
+          onChange={(_event, newValue) => {
+            setRatings(newValue);
+          }}
         />
 
         <Button

@@ -16,30 +16,69 @@ const User = () => {
   }, [params.userId]);
   return (
     <Grid>
-      <Typography variant="h5" sx={{ fontWeight: "bold" }}>
-        User Info
+      <Typography variant="h5" sx={{ fontWeight: "bold", marginBottom: 2 }}>
+        User
       </Typography>
-      <Box sx={{ display: "flex", flexDirection: "column", padding: "5rem" }}>
-        <Paper
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: "2rem",
-          }}
-        >
-          <Avatar
-            sx={{ width: 100, height: 100 }}
-            src={`https://picsum.photos/id/10/2500/1667`}
-          />
-          <Typography variant="h4" sx={{ fontWeight: "bold", marginY: "1rem" }}>
-            {user ? `${user.firstName} ${user.lastName}`: "Loading..."}
-          </Typography>
-          <Typography>Email: {user ? `${user.email}`: "Loading..."}</Typography>
-          <Typography>Role: {user ? `${user.role}`: "Loading..."}</Typography>
-        </Paper>
-      </Box>
+      <Grid container component="main" spacing={4}>
+        <Grid item md={5} xs={12}>
+          <Paper
+            sx={{ padding: 5, display: "flex", flexDirection: "row" }}
+            elevation={5}
+          >
+            <Avatar
+              sx={{ width: 100, height: 100, marginRight: 5 }}
+              src={`https://picsum.photos/id/10/2500/1667`}
+            />
+            <Grid sx={{ display: "flex", flexDirection: "column" }}>
+              <Typography
+                variant="h4"
+                sx={{ fontWeight: "bold", marginBottom: 1 }}
+              >
+                {user ? `${user.firstName} ${user.lastName}` : "Loading..."}
+              </Typography>
+              <Box sx={{ display: "flex", flexDirection: "row" }}>
+                <Typography
+                  sx={{ fontWeight: "600", color: "gray", marginRight: 1 }}
+                >
+                  Email:
+                </Typography>
+                <Typography>{user ? `${user.email}` : "Loading..."}</Typography>
+              </Box>
+              <Box sx={{ display: "flex", flexDirection: "row" }}>
+                <Typography
+                  sx={{ fontWeight: "600", color: "gray", marginRight: 1 }}
+                >
+                  Phone:
+                </Typography>
+                <Typography>{user ? `${user.phone}` : "Loading..."}</Typography>
+              </Box>
+            </Grid>
+          </Paper>
+        </Grid>
+
+        <Grid item md={7} xs={12}>
+          <Paper sx={{ height: "11.3rem", padding: 5 }} elevation={5}>
+            <Typography
+              sx={{
+                textAlign: "center",
+                fontWeight: "bold",
+                fontSize: "2.5rem",
+              }}
+            >
+              {user ? `${user.role}` : "Loading..."}
+            </Typography>
+            <Typography
+              sx={{
+                textAlign: "center",
+                fontSize: "2.5rem",
+                fontWeight: "light",
+              }}
+            >
+              {/* {total} */}
+            </Typography>
+          </Paper>
+        </Grid>
+      </Grid>
     </Grid>
   );
 };

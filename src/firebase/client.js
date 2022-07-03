@@ -57,7 +57,7 @@ export const clientCreate = (
   sex,
   callCenter,
   clientClass,
-  memberId,
+  ratings,
   phone,
   address
 ) => {
@@ -69,7 +69,7 @@ export const clientCreate = (
     sex,
     callCenter,
     clientClass,
-    memberId,
+    ratings,
     phone,
     address,
     timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
