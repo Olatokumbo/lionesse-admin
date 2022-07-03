@@ -8,6 +8,7 @@ import {
   MenuItem,
   InputLabel,
   Button,
+  
 } from "@mui/material";
 import { useState } from "react";
 import { clientCreate } from "../../firebase/client";
@@ -19,7 +20,7 @@ const CreateClient = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [age, setAge] = useState("");
-  const [sex, setSex] = useState("");
+  const [sex, setSex] = useState("MALE");
   const [callCenter, setCallCenter] = useState("");
   const [clientClass, setClientClass] = useState("");
   const [memberId, setMemberId] = useState("");
@@ -92,18 +93,27 @@ const CreateClient = () => {
           variant="outlined"
           margin="normal"
           value={age}
+          type="number"
           onChange={(e) => setAge(e.target.value)}
           size="small"
         />
-        <TextField
-          id="outlined-basic"
-          label="Sex"
-          variant="outlined"
-          margin="normal"
-          value={sex}
-          onChange={(e) => setSex(e.target.value)}
-          size="small"
-        />
+        <FormControl>
+          {/* <InputLabel id="demo-simple-select-disabled-label">Comapny Role</InputLabel> */}
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            title="Sex"
+            margin="normal"
+            label="Gender"
+            value={sex}
+            onChange={(e) => setSex(e.target.value)}
+            size="small"
+          >
+            <MenuItem value={"MALE"}>Male</MenuItem>
+            <MenuItem value={"FEMALE"}>Female</MenuItem>
+          </Select>
+        </FormControl>
+
         <TextField
           id="outlined-basic"
           label="Call Center"

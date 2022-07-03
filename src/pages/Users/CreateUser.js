@@ -111,6 +111,7 @@ const CreateUser = () => {
             <MenuItem value={"MANAGER"}>Manager</MenuItem>
             <MenuItem value={"SALES PERSON"}>Sales Person</MenuItem>
             <MenuItem value={"SECRETARY"}>Secretary</MenuItem>
+            <MenuItem value={"THERAPIST"}>Therapist</MenuItem>
             <MenuItem value={"CALL CENTER AGENT"}>Call Center Agent</MenuItem>
           </Select>
         </FormControl>
