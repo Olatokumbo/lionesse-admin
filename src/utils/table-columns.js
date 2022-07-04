@@ -46,7 +46,13 @@ export const ClientColumns = [
     field: "sex",
     headerName: "Sex",
     sortable: false,
-    width: 150,
+    width: 100,
+  },
+  {
+    field: "address",
+    headerName: "Address",
+    sortable: false,
+    width: 350,
   },
   {
     field: "callCenter",
@@ -58,7 +64,7 @@ export const ClientColumns = [
     field: "clientClass",
     headerName: "Client Class",
     sortable: false,
-    width: 160,
+    width: 100,
   },
   {
     field: "memberId",

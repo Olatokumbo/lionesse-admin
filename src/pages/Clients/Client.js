@@ -4,6 +4,7 @@ import { getClientById } from "../../firebase/client";
 import { useParams } from "react-router-dom";
 import { DataGrid } from "@mui/x-data-grid";
 import { SalesColumns } from "../../utils/table-columns";
+import Rating from '@mui/material/Rating';
 const Client = () => {
   const params = useParams();
   const [client, setUser] = useState(null);
@@ -57,6 +58,16 @@ const Client = () => {
                 </Typography>
                 <Typography>
                   {client ? `${client.phone}` : "Loading..."}
+                </Typography>
+              </Box>
+              <Box sx={{ display: "flex", flexDirection: "row" }}>
+                <Typography
+                  sx={{ fontWeight: "600", color: "gray", marginRight: 1 }}
+                >
+                  Rating:
+                </Typography>
+                <Typography>
+                  <Rating name="half-rating" value={client ? `${client.ratings}` : "Loading..."} precision={0.5} readOnly />
                 </Typography>
               </Box>
             </Grid>
